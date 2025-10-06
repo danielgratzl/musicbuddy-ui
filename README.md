@@ -51,8 +51,6 @@ The app is configured to automatically deploy to GitHub Pages when pushed to the
 4. Under "Build and deployment", select "GitHub Actions" as the source
 5. The workflow will automatically build and deploy your app
 
-Your site will be available at: `https://[username].github.io/musicbuddy/`
-
 ### Manual Deployment
 
 You can also deploy manually:
@@ -61,20 +59,7 @@ You can also deploy manually:
 npm run deploy
 ```
 
-## Customization
-
-### Update the base path
-
-If your repository name is different from "musicbuddy", update the base path in `vite.config.js`:
-
-```js
-export default defineConfig({
-  plugins: [react()],
-  base: '/your-repo-name/',
-})
-```
-
-### Update your collection
+### Collection Update
 
 Replace `public/MusicBuddy.csv` with your own CSV file to display your collection.
 
