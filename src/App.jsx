@@ -13,6 +13,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
   const [sortBy, setSortBy] = useState('title');
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     const loadAlbums = async () => {
@@ -95,8 +96,19 @@ function App() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-apple-bg bg-opacity-95 backdrop-blur-lg border-b border-apple-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-4xl font-bold text-apple-text mb-6">Vinyl Collection</h1>
-          <div className="space-y-4">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-4xl font-bold text-apple-text">Vinyl Collection</h1>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="md:hidden p-2 text-apple-text hover:text-apple-accent transition-colors"
+              aria-label="Toggle filters"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
+            </button>
+          </div>
+          <div className={`space-y-4 ${showFilters ? '' : 'hidden'} md:block`}>
             <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
             <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4">
               <FilterPanel
